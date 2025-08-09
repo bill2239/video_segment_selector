@@ -81,7 +81,7 @@ python video_segment_selector.py
 * [qimage2ndarray](https://pypi.org/project/qimage2ndarray/) – Convert NumPy arrays to Qt images
 
 ## Executable 
-If you want to avoid the hassle of installation, you can also download the built executable here https://bill2239.itch.io/video-segment-selector
+If you want to avoid the hassle of installation, you can also download the built executable here and it also include the screenshots of the UI and more details instructions of how to use the tool https://bill2239.itch.io/video-segment-selector
 
 ## License
 
