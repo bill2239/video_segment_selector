@@ -24,9 +24,9 @@ class SegmentSelectorWidget(QtWidgets.QWidget):
     def mousePressEvent(self, event):
         x = event.position().x() if hasattr(event, "position") else event.x()
         pos = self._pixel_to_frame(x)
-        if abs(pos - self.start_frame) < 5:
+        if abs(pos - self.start_frame) < self.total_frames/100.0:
             self.dragging = 'start'
-        elif abs(pos - self.end_frame) < 5:
+        elif abs(pos - self.end_frame) < self.total_frames/100.0:
             self.dragging = 'end'
 
     def mouseMoveEvent(self, event):
