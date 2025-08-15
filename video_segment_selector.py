@@ -124,7 +124,9 @@ class VideoPlayer(QtWidgets.QWidget):
         #self.main_layout.addWidget(self.export_button, 4, 0, 1, 3)
         self.main_layout.addWidget(self.export_button, 4, 0, 1, 2)
         self.main_layout.addWidget(self.export_video_button, 4, 2, 1, 1)
-
+        self.frames_to_gif_button = QtWidgets.QPushButton("Frames → GIF")
+        self.frames_to_gif_button.clicked.connect(self.framesto_gif)
+        self.main_layout.addWidget(self.frames_to_gif_button, 5, 0, 1, 3)
         self.setLayout(self.main_layout)
 
     def setup_camera(self, fps):
@@ -259,6 +261,34 @@ class VideoPlayer(QtWidgets.QWidget):
         out.release()
         QtWidgets.QMessageBox.information(self, "Done", f"Exported segment video to:\n{output_path}")
 
+    def framesto_gif(self, duration=0.1):
+        # Select folder containing frames
+        frames_dir = QtWidgets.QFileDialog.getExistingDirectory(self, "Select Frames Directory")
+        if not frames_dir:
+            return
+            
+        # Get all image files sorted
+        import glob, os
+        frame_files = sorted(glob.glob(os.path.join(frames_dir, "*.jpg")))
+        if not frame_files:
+            QtWidgets.QMessageBox.warning(self, "Error", "No JPG frames found in the selected directory.")
+            return
+        
+        # Ask where to save GIF
+        output_path, _ = QtWidgets.QFileDialog.getSaveFileName(
+            self, "Save GIF", "output.gif", "GIF (*.gif)"
+        )
+        if not output_path:
+            return
+
+        # Create GIF using imageio
+        import imageio
+        with imageio.get_writer(output_path, mode='I', duration=duration) as writer:
+            for file in frame_files:
+                frame = imageio.imread(file)
+                writer.append_data(frame)
+
+        QtWidgets.QMessageBox.information(self, "Done", f"GIF saved to:\n{output_path}")
 
     def close_win(self):
         self.camera_capture.release()
