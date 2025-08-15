@@ -163,7 +163,7 @@ class VideoPlayer(QtWidgets.QWidget):
         self.selector.set_range(self.total_frames)
 
         self.video = True
-        self.camera_video_button.setText("Switch to camera")
+        self.camera_video_button.setText("load video file")
 
     def update_segment_from_selector(self, start, end):
         self.start_frame = start
