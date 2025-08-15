@@ -85,7 +85,7 @@ If you want to avoid the hassle of installation, you can also download the built
 
 ## License
 
-MIT License.
+GPL3.0
 
 ---
 
