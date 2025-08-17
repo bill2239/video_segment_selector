@@ -283,7 +283,7 @@ class VideoPlayer(QtWidgets.QWidget):
 
         # Create GIF using imageio
         import imageio
-        with imageio.get_writer(output_path, mode='I', duration=duration) as writer:
+        with imageio.get_writer(output_path, mode='I', duration=duration, loop=0) as writer:
             for file in frame_files:
                 frame = imageio.imread(file)
                 writer.append_data(frame)
