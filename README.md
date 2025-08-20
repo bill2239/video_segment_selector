@@ -13,6 +13,8 @@ Features:
 * **Drag & drop** support for quick video loading.
 
 ---
+## Sample gif output 
+![samplegif](sample.gif)
 
 ## Features
 
@@ -71,6 +73,7 @@ python video_segment_selector.py
 
 * Exported frames: `frame_00001.jpg`, `frame_00002.jpg`, …
 * Exported video: `segment.mp4` (or custom name chosen in save dialog).
+* Exported video: `segment.gif` (or custom name chosen in save dialog).
 
 ---
 
