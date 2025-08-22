@@ -2,7 +2,8 @@ import cv2
 import sys
 from PySide6 import QtCore, QtGui, QtWidgets
 import qimage2ndarray
-
+# Create GIF using imageio
+import imageio
 
 class SegmentSelectorWidget(QtWidgets.QWidget):
     segmentChanged = QtCore.Signal(int, int)
@@ -281,8 +282,6 @@ class VideoPlayer(QtWidgets.QWidget):
         if not output_path:
             return
 
-        # Create GIF using imageio
-        import imageio
         with imageio.get_writer(output_path, mode='I', duration=duration, loop=0) as writer:
             for file in frame_files:
                 frame = imageio.imread(file)
